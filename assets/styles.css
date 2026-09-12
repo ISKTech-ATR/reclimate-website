@@ -161,6 +161,10 @@ sub{ font-size:.62em; }
   color:var(--mute); transition:color .25s var(--ease);
 }
 .nav__links a:hover{ color:var(--amber); }
+.nav__links a.is-active{ color:var(--text); }
+.nav__links a.is-active::after{
+  content:""; display:block; height:1px; margin-top:5px; background:var(--amber);
+}
 
 .nav__actions{ display:flex; align-items:center; gap:12px; margin-left:auto; }
 .nav__links + .nav__actions{ margin-left:0; }
@@ -681,4 +685,184 @@ sub{ font-size:.62em; }
   .reveal{ opacity:1; transform:none; }
   .thermo__fill{ width:100%; }
   .hero__photo img{ animation:none; transform:scale(1.04); }
+}
+
+/* ============================================================
+   Interior pages
+   ============================================================ */
+
+/* ── page hero ───────────────────────────────────────────── */
+
+.phero{
+  position:relative; overflow:hidden;
+  padding:clamp(150px,18vw,220px) 0 clamp(56px,7vw,88px);
+  border-bottom:1px solid var(--line-soft);
+}
+.phero__photo{ position:absolute; inset:0; }
+.phero__photo img{
+  width:100%; height:100%; object-fit:cover; object-position:50% 45%;
+  filter:saturate(.6) contrast(1.06); opacity:.6;
+}
+.phero__veil{
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(100% 80% at 82% 112%, rgba(248,171,74,.14), transparent 56%),
+    radial-gradient(95% 75% at 8% 0%, rgba(19,79,72,.62), transparent 64%),
+    linear-gradient(to bottom, rgba(7,18,15,.74) 0%, rgba(7,18,15,.5) 30%, rgba(7,18,15,.92) 78%, var(--bg) 100%);
+}
+.phero__inner{ position:relative; z-index:2; }
+.phero__title{
+  font-size:clamp(2.1rem,5.4vw,4rem); font-weight:500;
+  letter-spacing:-.045em; max-width:20ch; margin-bottom:24px;
+}
+.phero__lede{
+  max-width:60ch; color:var(--mute);
+  font-size:clamp(1rem,1.3vw,1.125rem); line-height:1.64;
+}
+.phero__lede b{ color:var(--text); font-weight:500; }
+.phero__meta{
+  display:flex; flex-wrap:wrap; gap:10px; margin-top:30px;
+}
+.phero__meta span{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.12em;
+  color:var(--mute); border:1px solid var(--line); border-radius:999px; padding:7px 14px;
+}
+
+/* ── prose ───────────────────────────────────────────────── */
+
+.prose{ max-width:64ch; }
+.prose p{ color:var(--mute); font-size:1.0625rem; line-height:1.72; }
+.prose p + p{ margin-top:20px; }
+.prose b, .prose strong{ color:var(--text); font-weight:500; }
+.prose h3{ font-size:1.4rem; margin:38px 0 14px; }
+
+/* ── numbered stat grid ──────────────────────────────────── */
+
+.stats{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1px; background:var(--line-soft); border:1px solid var(--line-soft);
+}
+.stats > div{ background:var(--bg); padding:30px 24px; }
+.stats dt, .stats .stats__k{
+  font-family:var(--disp); font-weight:500; font-size:clamp(1.5rem,3vw,2.3rem);
+  letter-spacing:-.04em; line-height:1.05; color:var(--text);
+}
+.stats dd, .stats .stats__v{
+  margin:14px 0 0; font-family:var(--mono); font-size:10px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--dim); line-height:1.7;
+}
+.stats--amber .stats__k{ color:var(--amber); }
+
+/* ── process rail (waste → wealth) ───────────────────────── */
+
+.rail{
+  display:grid; grid-template-columns:repeat(6,1fr);
+  gap:1px; background:var(--line-soft); border:1px solid var(--line-soft);
+}
+.rail li{ background:var(--bg); padding:22px 18px 26px; }
+.rail b{
+  display:block; font-family:var(--mono); font-size:10px;
+  letter-spacing:.16em; color:var(--amber); margin-bottom:12px;
+}
+.rail span{
+  font-family:var(--disp); font-size:1rem; font-weight:500;
+  letter-spacing:-.02em; line-height:1.25; display:block;
+}
+
+/* ── feature list (2-up) ─────────────────────────────────── */
+
+.feats{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); }
+.feats > div{ background:var(--bg); padding:28px 26px 32px; }
+.feats h3{ font-size:1.15rem; margin-bottom:12px; }
+.feats p{ color:var(--mute); font-size:.94rem; line-height:1.64; }
+.feats .feats__n{
+  font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+  color:var(--amber); display:block; margin-bottom:14px;
+}
+
+/* ── team ────────────────────────────────────────────────── */
+
+.team{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); }
+.team figure{ margin:0; background:var(--bg); }
+.team img{
+  display:block; width:100%; aspect-ratio:1; object-fit:cover;
+  filter:saturate(.6) contrast(1.03) brightness(.9);
+  transition:filter .5s var(--ease);
+}
+.team figure:hover img{ filter:saturate(.95) contrast(1.03) brightness(1); }
+.team figcaption{ padding:18px 18px 22px; }
+.team figcaption b{ display:block; font-family:var(--disp); font-size:1rem; font-weight:500; letter-spacing:-.02em; }
+.team figcaption span{
+  display:block; margin-top:7px; font-family:var(--mono); font-size:9.5px;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--dim); line-height:1.65;
+}
+
+/* ── site list ───────────────────────────────────────────── */
+
+.sites{ display:flex; flex-direction:column; border-top:1px solid var(--line-soft); }
+.sites li{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 20px;
+  padding:22px 0; border-bottom:1px solid var(--line-soft);
+}
+.sites b{ font-family:var(--disp); font-size:1.2rem; font-weight:500; letter-spacing:-.025em; min-width:280px; }
+.sites span{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); }
+.sites .is-live{ color:var(--amber); }
+
+/* ── contact ─────────────────────────────────────────────── */
+
+.contact{ background:var(--bg-alt); border-bottom:1px solid var(--line-soft); }
+.contact__grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(40px,6vw,88px); align-items:start; }
+.chips{ display:flex; flex-wrap:wrap; gap:9px; margin:28px 0 30px; }
+.chips button{
+  appearance:none; cursor:pointer; background:transparent;
+  border:1px solid var(--line); border-radius:999px; padding:9px 15px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; color:var(--mute);
+  transition:border-color .25s var(--ease), color .25s var(--ease), background .25s var(--ease);
+}
+.chips button:hover{ color:var(--text); border-color:rgba(236,240,233,.3); }
+.chips button[aria-pressed="true"]{ background:var(--amber); border-color:var(--amber); color:#07120F; }
+
+.offices{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); }
+.offices > div{ background:var(--bg); padding:24px 22px 28px; }
+.offices h4{ font-size:1rem; margin-bottom:14px; }
+.offices address{ font-style:normal; color:var(--mute); font-size:.9rem; line-height:1.75; }
+.offices .offices__tag{
+  display:block; font-family:var(--mono); font-size:9.5px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--dim); margin-bottom:12px;
+}
+
+/* ── article list ────────────────────────────────────────── */
+
+.articles{ display:flex; flex-direction:column; border-top:1px solid var(--line-soft); }
+.articles a{
+  display:grid; grid-template-columns:1fr auto; gap:16px 28px; align-items:baseline;
+  padding:28px 0; border-bottom:1px solid var(--line-soft);
+  transition:padding-left .35s var(--ease);
+}
+.articles a:hover{ padding-left:12px; }
+.articles h3{ font-size:clamp(1.15rem,2vw,1.6rem); font-weight:500; }
+.articles a:hover h3{ color:var(--amber); }
+.articles .articles__meta{
+  font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--dim); white-space:nowrap;
+}
+
+/* ── responsive (interior) ───────────────────────────────── */
+
+@media (max-width:1080px){
+  .rail{ grid-template-columns:repeat(3,1fr); }
+  .team{ grid-template-columns:repeat(3,1fr); }
+  .stats{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:900px){
+  .contact__grid{ grid-template-columns:1fr; }
+  .feats{ grid-template-columns:1fr; }
+  .team{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:640px){
+  .rail{ grid-template-columns:1fr 1fr; }
+  .stats{ grid-template-columns:1fr; }
+  .offices{ grid-template-columns:1fr; }
+  .sites b{ min-width:0; }
+  .articles a{ grid-template-columns:1fr; gap:10px; }
 }

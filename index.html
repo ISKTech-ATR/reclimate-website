@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=c755b902">
 
 <script type="application/ld+json">
 {
@@ -46,21 +46,21 @@
 <!-- nav -->
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="brand" href="#top" aria-label="Reclimate home">
+    <a class="brand" href="index.html" aria-label="Reclimate home">
       <img class="brand__mark" src="assets/logo.png" alt="" width="256" height="242">
       <span class="brand__word">Reclimate</span>
     </a>
 
     <nav class="nav__links" aria-label="Primary">
-      <a href="#problem">Problem</a>
-      <a href="#method">Method</a>
-      <a href="#platform">Platform</a>
-      <a href="#projects">Projects</a>
-      <a href="#company">Company</a>
+      <a href="biochar.html">Biochar</a>
+      <a href="projects.html">Projects</a>
+      <a href="work-with-us.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="news.html">News</a>
     </nav>
 
     <div class="nav__actions">
-      <a class="btn btn--solid" href="#contact">Remove CO₂ <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn--solid" href="remove-co2.html">Remove CO&#8322; <span aria-hidden="true">&rarr;</span></a>
       <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
         <span></span><span></span>
       </button>
@@ -68,13 +68,13 @@
   </div>
 
   <div class="nav__drawer" id="navDrawer" hidden>
-    <a href="#problem">Problem</a>
-    <a href="#method">Method</a>
-    <a href="#stakeholders">Who we work with</a>
-    <a href="#platform">Platform</a>
-    <a href="#projects">Projects</a>
-    <a href="#company">Company</a>
-    <a class="btn btn--solid" href="#contact">Remove CO₂ &rarr;</a>
+    <a href="biochar.html">Biochar</a>
+    <a href="projects.html">Projects</a>
+    <a href="work-with-us.html">Solutions</a>
+    <a href="about.html">About</a>
+    <a href="news.html">News</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn--solid" href="remove-co2.html">Remove CO&#8322; &rarr;</a>
   </div>
 </header>
 
@@ -149,7 +149,7 @@
       measure what comes out of them, and make the removal bankable &mdash; on the same ground the
       biomass came from.
     </p>
-    <a class="link" href="#method">How the process works <span aria-hidden="true">&#8599;</span></a>
+    <a class="link" href="biochar.html">How the process works <span aria-hidden="true">&#8599;</span></a>
   </div>
 </section>
 
@@ -367,7 +367,7 @@
           <p class="project__meta"><span>Malaysia</span><span>Greater Klang Valley &middot; Northern Borneo</span><span class="project__id">Project ID GCSP1039</span></p>
           <h3>Soil and Flame</h3>
           <p>Our first operating programme. Mill residue across peninsular and Bornean sites converted on location, with the char returning to surrounding farmland.</p>
-          <a class="link" href="https://www.reclimate.earth/projects/malaysia-soil-and-flame">Project detail <span aria-hidden="true">&#8599;</span></a>
+          <a class="link" href="soil-and-flame.html">Project detail <span aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
 
@@ -379,7 +379,7 @@
           <p class="project__meta"><span>Indonesia</span><span>Archipelago programme</span></p>
           <h3>Nusantara Archipelago</h3>
           <p>Scaling the model across Indonesian smallholder networks &mdash; distributed units, shared MRV, one issuance pipeline serving many sites at once.</p>
-          <a class="link" href="https://www.reclimate.earth/projects/indonesia-nusantara-archipelago-project">Project detail <span aria-hidden="true">&#8599;</span></a>
+          <a class="link" href="nusantara.html">Project detail <span aria-hidden="true">&#8599;</span></a>
         </div>
       </article>
     </div>
@@ -448,26 +448,61 @@
 </section>
 
 <!-- cta -->
-<section class="cta" id="contact">
-  <canvas class="cta__embers" id="embers2" aria-hidden="true"></canvas>
-  <div class="wrap cta__inner reveal">
-    <p class="eyebrow eyebrow--live"><span class="pulse" aria-hidden="true"></span>Open for 2026 offtake</p>
-    <h2 class="h2 h2--xl">Bring us your residue,<br>or buy the tonnes it makes.</h2>
-    <p class="cta__sub">Mills and estates with feedstock, and corporates with a removal target &mdash; both start with the same conversation.</p>
-    <div class="cta__actions">
-      <a class="btn btn--solid btn--lg" href="mailto:hello@reclimate.earth?subject=Reclimate%20enquiry">hello@reclimate.earth <span aria-hidden="true">&rarr;</span></a>
-      <a class="btn btn--ghost btn--lg" href="https://www.reclimate.earth/work-with-us">Work with us</a>
+</main>
+<section class="section contact" id="contact">
+  <div class="wrap contact__grid">
+    <div class="reveal">
+      <p class="eyebrow">Contact</p>
+      <h2 class="h2">Let&rsquo;s discuss<br>your next project.</h2>
+      <p class="section__sub">
+        <b>Tell us which door you are coming through</b> and the email opens ready to send.
+        Feedstock owners, biochar buyers and corporates with a removal target all start here.
+      </p>
+
+      <div class="chips" data-mailto role="group" aria-label="What is this about?">
+        <button type="button" aria-pressed="true" data-subject="Biochar project development">Project development</button>
+        <button type="button" aria-pressed="false" data-subject="Biochar bulk purchase">Biochar bulk purchase</button>
+        <button type="button" aria-pressed="false" data-subject="Carbon credit purchase">Carbon credit purchase</button>
+        <button type="button" aria-pressed="false" data-subject="Waste management, energy, or other carbon projects">Waste, energy &amp; other</button>
+        <button type="button" aria-pressed="false" data-subject="General enquiry">Something else</button>
+      </div>
+
+      <a class="btn btn--solid btn--lg" id="mailtoBtn" href="mailto:info@reclimate.earth?subject=Biochar%20project%20development">
+        info@reclimate.earth <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+    <div class="offices reveal">
+      <div>
+        <h4>Reclimate Sdn. Bhd.</h4>
+        <span class="offices__tag">Malaysia</span>
+        <address>
+          Level 33A, Menara 1MK<br>
+          Kompleks 1 Mont Kiara<br>
+          No. 1 Jalan Kiara<br>
+          50480 Mont Kiara<br>
+          WP Kuala Lumpur
+        </address>
+      </div>
+      <div>
+        <h4>Reclimate Pte. Ltd.</h4>
+        <span class="offices__tag">Singapore</span>
+        <address>
+          60 Paya Lebar Road<br>
+          #10-03 Paya Lebar Square<br>
+          Singapore 409051
+        </address>
+      </div>
     </div>
   </div>
 </section>
 
-</main>
 
 <!-- footer -->
 <footer class="foot">
   <div class="wrap foot__inner">
     <div class="foot__brand">
-      <a class="brand" href="#top">
+      <a class="brand" href="index.html">
         <img class="brand__mark" src="assets/logo.png" alt="" width="256" height="242">
         <span class="brand__word">Reclimate</span>
       </a>
@@ -476,32 +511,36 @@
 
     <nav class="foot__col" aria-label="Company">
       <h5>Company</h5>
-      <a href="https://www.reclimate.earth/about-1">About</a>
-      <a href="https://www.reclimate.earth/blogs-news">Blog &amp; news</a>
-      <a href="https://www.reclimate.earth/work-with-us">Work with us</a>
+      <a href="about.html">About</a>
+      <a href="news.html">News &amp; press</a>
+      <a href="work-with-us.html">Work with us</a>
+      <a href="#contact">Contact</a>
     </nav>
 
     <nav class="foot__col" aria-label="Work">
       <h5>Work</h5>
-      <a href="#method">Biochar method</a>
-      <a href="#platform">Platform</a>
-      <a href="#projects">Projects</a>
+      <a href="biochar.html">Biochar</a>
+      <a href="projects.html">Projects</a>
+      <a href="soil-and-flame.html">Soil and Flame</a>
+      <a href="nusantara.html">Nusantara Archipelago</a>
+      <a href="remove-co2.html">Remove CO&#8322;</a>
     </nav>
 
     <nav class="foot__col" aria-label="Social">
       <h5>Elsewhere</h5>
       <a href="https://www.linkedin.com/company/reclimateglobal">LinkedIn</a>
       <a href="https://www.instagram.com/reclimate.official/">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61580742312086">Facebook</a>
       <a href="https://www.youtube.com/@reclimate.official">YouTube</a>
     </nav>
   </div>
 
   <div class="wrap foot__base">
     <p>&copy; <span id="yr">2026</span> Reclimate. All rights reserved.</p>
-    <p class="foot__coords">2.9&deg;N &nbsp;101.6&deg;E &nbsp;&middot;&nbsp; Malaysia &amp; Indonesia</p>
+    <p class="foot__coords"><a href="mailto:info@reclimate.earth">info@reclimate.earth</a> &nbsp;&middot;&nbsp; Kuala Lumpur &amp; Singapore</p>
   </div>
 </footer>
 
-<script src="assets/app.js" defer></script>
+<script src="assets/app.js?v=c755b902" defer></script>
 </body>
 </html>

@@ -51,17 +51,6 @@
     }
   }
 
-  /* ── reveal on scroll + step thermometer ──────────────── */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-in');
-      io.unobserve(entry.target);
-    });
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
-
-  $$('.reveal').forEach((el) => io.observe(el));
-
   /* ── count-up ─────────────────────────────────────────── */
   const fmt = new Intl.NumberFormat('en-US');
   const countUp = (el) => {
@@ -78,15 +67,41 @@
     requestAnimationFrame(step);
   };
 
-  const countIO = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      countUp(entry.target);
-      countIO.unobserve(entry.target);
-    });
-  }, { threshold: 0.6 });
+  /* ── reveal on scroll + step thermometer + counters ─────
+     A plain sweep rather than IntersectionObserver: IO reports
+     threshold crossings, so anything that jumps from below the
+     fold to above it in one scroll (anchor links, End key, a fast
+     flick) never fires and stays invisible for good. Comparing
+     rects each frame catches "already scrolled past" too. */
+  let pending = $$('.reveal').map((el) => ({ el, count: null }));
+  pending.push(...$$('.count').map((el) => ({ el, count: el })));
 
-  $$('.count').forEach((el) => countIO.observe(el));
+  const sweep = () => {
+    if (!pending.length) return;
+    const limit = innerHeight * 0.88;
+    pending = pending.filter(({ el, count }) => {
+      if (el.getBoundingClientRect().top > limit) return true;  // still below the fold
+      if (count) countUp(count); else el.classList.add('is-in');
+      return false;
+    });
+  };
+
+  // Throttled on a timestamp rather than rAF: a backgrounded or hidden tab
+  // pauses rAF, and the page must not be left with invisible content when it
+  // comes back. sweep() only measures what is still pending, so it stays cheap.
+  let lastSweep = 0;
+  const queueSweep = () => {
+    const now = performance.now();
+    if (now - lastSweep < 100) return;
+    lastSweep = now;
+    sweep();
+  };
+
+  sweep();
+  addEventListener('scroll', queueSweep, { passive: true });
+  addEventListener('resize', queueSweep);
+  addEventListener('load', sweep);
+  document.addEventListener('visibilitychange', sweep);
 
   /* ── marquee: duplicate the row so the loop is seamless ─ */
   $$('[data-marquee]').forEach((m) => {
@@ -123,6 +138,25 @@
         select(next);
       });
     });
+  });
+
+  /* ── contact chips drive the mailto subject ───────────── */
+  const mailBtn = $('#mailtoBtn');
+  $$('[data-mailto]').forEach((group) => {
+    const chips = $$('button', group);
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+      if (!mailBtn) return;
+      const subject = chip.dataset.subject || 'Enquiry';
+      const body = [
+        'Hi Reclimate,', '',
+        `I'm getting in touch about: ${subject}.`, '',
+        'Name:', 'Company:', 'Location:', '', 'A bit more detail:', ''
+      ].join(String.fromCharCode(10));
+      mailBtn.href = `mailto:info@reclimate.earth?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }));
+    // prime the default so the first click is not required
+    chips.find((c) => c.getAttribute('aria-pressed') === 'true')?.click();
   });
 
   /* ── ember field ──────────────────────────────────────── */

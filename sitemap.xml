@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://reclimate.earth/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://reclimate.earth/biochar.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reclimate.earth/projects.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reclimate.earth/soil-and-flame.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reclimate.earth/nusantara.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reclimate.earth/work-with-us.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reclimate.earth/remove-co2.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reclimate.earth/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reclimate.earth/news.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

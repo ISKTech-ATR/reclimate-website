@@ -4,7 +4,15 @@ Static marketing site for Reclimate — biochar carbon removal across Southeast 
 No build step, no dependencies. Three files do the work.
 
 ```
-index.html          the whole page
+index.html          home
+biochar.html        what biochar is, market, standards
+projects.html       portfolio overview, feedstocks, derisking
+soil-and-flame.html   project GCSP1039 (Malaysia)
+nusantara.html        project GCSP1288 (Indonesia)
+work-with-us.html   the five stakeholder paths + platform
+remove-co2.html     carbon credit buyers
+about.html          story, values, team, advisors, partners, awards
+news.html           articles + press
 assets/styles.css   design system + layout
 assets/app.js       typewriter, reveals, counters, tabs, ember canvas
 assets/logo.png     brand mark (white, from reclimate.earth)
@@ -14,6 +22,16 @@ assets/img/         project photography (hero, field band, project cards, team)
 assets/logos/       award, certification and press marks, keyed to white
 robots.txt, sitemap.xml
 ```
+
+## Structure
+
+Nine static pages. Nav, contact block and footer markup are repeated in each file
+rather than injected by JS — better for SEO and it works with scripts off. They were
+generated from one template, so if you change the nav, change it in all nine (a quick
+find-and-replace, or regenerate).
+
+`?v=<hash>` on the CSS and JS URLs is a content hash for cache-busting. Recompute it
+when you change either file, or visitors keep the old copy.
 
 ## Run locally
 
@@ -88,10 +106,20 @@ greyscale at low opacity and brighten on hover.
 These are third-party trademarks. Reclimate has the standing to show them as a
 recipient / certified party, but confirm each one still applies before launch.
 
+## Contact
+
+There is no form backend. The contact block instead uses interest chips that build a
+`mailto:` to info@reclimate.earth with the subject and a pre-filled body — works with
+no server. If you want a real form with lead capture, Formspree, Netlify Forms or a
+Google Apps Script endpoint would each drop straight into that section.
+
 ## Before launch
 
-- `hello@reclimate.earth` in the CTA is a placeholder address.
-- Project ID `GCSP1039` on the Malaysia card is taken from the live project page —
-  confirm it is the ID you want public.
+- News articles link to e27's homepage, not the specific posts — I could not find
+  the direct URLs. Replace both `href`s in `news.html`.
+- Project IDs `GCSP1039` and `GCSP1288` are taken from the live project pages;
+  confirm you want them public.
+- Team headshot-to-name pairing was read from the live page's own DOM structure,
+  not guessed — but it is worth one pass to be certain, since these are real people.
 - Daily Express was dropped from the press row: its logo does not survive
   conversion to a single-colour mark.
