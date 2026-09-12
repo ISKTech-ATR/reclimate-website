@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /
+
+# Draft preview on GitHub Pages — search engines blocked.
+# At launch on reclimate.earth, replace with:
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://reclimate.earth/sitemap.xml
