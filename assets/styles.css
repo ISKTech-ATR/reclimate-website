@@ -458,6 +458,8 @@ sub{ font-size:.62em; }
   transition:opacity .35s var(--ease);
 }
 .press__row li:hover img{ opacity:.8; }
+.press__row a{ display:block; }
+.press__row a:focus-visible{ outline-offset:6px; }
 
 .project__id{ color:var(--mute) !important; }
 
