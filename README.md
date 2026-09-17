@@ -1,7 +1,9 @@
 # reclimate.earth
 
 Static marketing site for Reclimate — biochar carbon removal across Southeast Asia.
-No build step, no dependencies. Three files do the work.
+No build step, no dependencies. Nine pages, one stylesheet, one script.
+
+Working on this with Claude? Read `CLAUDE.md` first — it holds the rules that are easy to get wrong.
 
 ```
 index.html          home
@@ -27,8 +29,8 @@ robots.txt, sitemap.xml
 
 Nine static pages. Nav, contact block and footer markup are repeated in each file
 rather than injected by JS — better for SEO and it works with scripts off. They were
-generated from one template, so if you change the nav, change it in all nine (a quick
-find-and-replace, or regenerate).
+generated from one template, so if you change the nav, change it in all nine (a scripted
+find-and-replace, then grep to confirm).
 
 `?v=<hash>` on the CSS and JS URLs is a content hash for cache-busting. Recompute it
 when you change either file, or visitors keep the old copy.
@@ -97,7 +99,8 @@ dark palette (desaturated ~0.8, darkened, cover-cropped, progressive JPEG):
 `assets/logos/` holds award, certification and press marks pulled from the same
 pages and keyed to white-on-transparent (background colour sampled from the
 corners, everything a distance from it becomes opaque white). They render
-greyscale at low opacity and brighten on hover.
+greyscale at low opacity and brighten on hover. Shell is the exception: that keying
+flattened its two-colour pecten, so it maps luminance to a light grey band instead.
 
 - **awards** — Microsoft, Shell LiveWIRE, Startup World Cup, BEYOND Expo, Green Finance Alliance, MYStartup, Grow Asia
 - **certifications** — Carbon Standards International, Artisan C-Sink, CERES, Sylvera, ICROA
@@ -115,8 +118,8 @@ Google Apps Script endpoint would each drop straight into that section.
 
 ## Before launch
 
-- News articles link to e27's homepage, not the specific posts — I could not find
-  the direct URLs. Replace both `href`s in `news.html`.
+- `robots.txt` blocks all crawlers while this is a draft. Replace it with the
+  commented production version when the site moves to reclimate.earth.
 - Project IDs `GCSP1039` and `GCSP1288` are taken from the live project pages;
   confirm you want them public.
 - Team headshot-to-name pairing was read from the live page's own DOM structure,
