@@ -118,8 +118,8 @@ Google Apps Script endpoint would each drop straight into that section.
 
 ## Before launch
 
-- `robots.txt` blocks all crawlers while this is a draft. Replace it with the
-  commented production version when the site moves to reclimate.earth.
+- `robots.txt` blocks all crawlers while this is a draft. It is step 4 of the launch
+  sequence in `CLAUDE.md` — do not flip it before the domain moves.
 - Project IDs `GCSP1039` and `GCSP1288` are taken from the live project pages;
   confirm you want them public.
 - Team headshot-to-name pairing was read from the live page's own DOM structure,

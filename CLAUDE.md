@@ -40,11 +40,42 @@ Check any new logo at 21px / 40% opacity on `#07120F` before using it.
 **People's photos must be matched by name from the source**, never by position or
 guess. The team headshots were paired from the About page's own DOM structure.
 
-**`robots.txt` is `Disallow: /` on purpose** while this is a draft on github.io. Swap in
-the commented production version only when the site moves to reclimate.earth.
+**`robots.txt` is `Disallow: /` on purpose** while this is a draft on github.io. Do not
+flip it on its own — it is step 4 of the launch sequence below, and flipping it early
+points search engines at a site whose canonical URLs still resolve to the old Wix site.
 
 **No form backend.** The contact block's chips build a `mailto:` to
 info@reclimate.earth. Don't add a `<form>` that posts nowhere.
+
+## Launch: moving to reclimate.earth
+
+Do these **in this order**. Steps 1 and 2 need admin on the repo and control of the
+domain — a write-access collaborator cannot do either, so they belong to the repo
+owner (ISKTech-ATR). Steps 3–5 are ordinary commits.
+
+Pointing the domain at this site replaces the live Wix site for every visitor. It is a
+cutover, not a preview. Confirm with the owner before starting.
+
+1. **DNS at the registrar.** Point the apex `reclimate.earth` at GitHub Pages with four
+   A records (and the AAAA records if you want IPv6), and `www` at
+   `isktech-atr.github.io` via CNAME. Take the current IPs from GitHub's own docs —
+   "Managing a custom domain for your GitHub Pages site" — rather than from memory.
+2. **Repo → Settings → Pages → Custom domain.** Enter `reclimate.earth`, save, wait for
+   the DNS check to pass, then tick **Enforce HTTPS** once the certificate is issued
+   (can take up to an hour). This writes a `CNAME` file to the repo root — leave it
+   alone; deleting it unsets the domain.
+3. **Decide what happens to the old Wix URLs.** They do not exist here and will 404:
+   `/about-1`, `/general-4`, `/projects`, `/projects/malaysia-soil-and-flame`,
+   `/projects/indonesia-nusantara-archipelago-project`, `/blogs-news`, `/work-with-us`,
+   `/remove-co2`. Anything already linking to or ranking for those breaks. GitHub Pages
+   has no redirect rules, so the options are a small HTML file at each old path doing a
+   meta refresh plus `rel=canonical`, or accepting the 404s.
+4. **Flip `robots.txt`** to the production version commented inside the file.
+5. **Submit `sitemap.xml`** in Google Search Console and confirm indexing starts.
+
+The `canonical` tags and `og:image` already point at `https://reclimate.earth/...`.
+They are wrong today on github.io and become correct at step 2 — that is deliberate,
+do not "fix" them to github.io URLs.
 
 ## Conventions
 
